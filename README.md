@@ -78,6 +78,8 @@ ___
 
 ![Demo](assets/screenshots/demo.gif)
 
+[Watch the full demo video here](https://drive.google.com/file/d/17xRgLvOYWWfaI0WBg4kqQ--rEe13OPvO/view?usp=sharing)
+
 ___
 
 ## 📊 Results
