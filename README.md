@@ -1,6 +1,6 @@
-# Topic: Problem
+# COSC 428 Final Project: Shortest Path 
 
-This project compares two algorithms with very different time complexities to solve the [state problem here] problem.
+This project compares two algorithms with very different time complexities to solve the **shortest path problem** using a weighted maze grid.
 
 ---
 
@@ -20,53 +20,82 @@ This project compares two algorithms with very different time complexities to so
 ## 📘 Overview
 
 ### Problem Statement:
-This is the problem statement. Blah blah blah blah...
+Given a weighted graph and two vertices **S** (start) and **G** (goal), the objective is to compute the path with the lowest total cost. We represent the graph as a maze grid, where each walkable box becomes a vertex and each movement creates an edge. Tiles have different traversal costs:
+* `.` → weight 1
+* `~` → weight 5
+* `#` → wall (not walkable)
 
-We plan to solve this using two approaches:
-1. Algorithm 1
-2. Algorithm 2
+The maze is converted into a graph where edges exist between up, down, left, and right neigbors. 
+
+We compare two approaches with very different time complexities:
+1. Bellman-Ford
+2. Dijkstra
 
 ___
 
 ## 🧩 Algorithms
 
-### Algorithm 1:
-This is a brief explanation of algorithm 1. Blah blah blah blah...
-<br><br>**Time Complexity:**
-<br>**Space Complexity:**
+### Algorithm 1: Bellman-Ford
+Bellmand-Ford relaxes all edges repeatedly to compute the shortest distance from the start vertex to every other vertex. In our maze, each walkable tile is converted into an ID so distances and parent pointers can be stored. The algorithm performs up to V-1 full relaxation rounds, exploring the entire maze.
+<br><br>**Time Complexity:** O(VE)
+<br>**Space Complexity:** O(V)
 
-### Algorithm 2:
-This is a brief explanation of algorithm 2. Blah blah blah blah...
-<br><br>**Time Complexity:**
-<br>**Space Complexity:**
+
+### Algorithm 2: Dijkstra
+Dijkstra's algorithm always explores the neighbor with the smallest total cost using a priority queue. Instead of relaxing all edges repeatedly, it processes each vertex only once and always chooses the cheapest available path. This makes it significantly faster in mazes where the weights are positive. 
+<br><br>**Time Complexity:** O(E log V)
+<br>**Space Complexity:** O(V)
 
 ---
 
 ## ⚙️ How to Run
 
-**`code` command** small code.Some basic commands are:
+Clone the repository
+
 ```
-git status
-git add
-git commit
+git clone https://github.com/chlyn/COSC428_Final_Project.git
 ```
+Open the project folder
+
+```
+cd COSC428_Final_Project
+```
+Run the project by opening `index.html` in any browser
+
+![Home Page](assets/screenshots/page.png)
+
+Choose an algorithm (Bellman-Ford or Dijkstra) from the dropdown
+
+![Dropdown](assets/screenshots/dropdown.png)
+
+Click `Run` to start the algorithm
+
+![Run](assets/screenshots/run.png)
+
+___
+
+## 🎥 Demo
+
+![Demo](assets/screenshots/demo.gif)
 
 ___
 
 ## 📊 Results
 
-### Algorithm 1:
-Describe the result here. Blah blah blah blah...
-<br>![image](image link of algorithm 1 results)
+### Algorithm 1: Bellman-Ford
+Bellman-Ford found the correct shortest path but explored many unnecessary tiles because it repeatedly checks every edge. This causes it to explore the entire maze, resulting in a slower runtime and a large number of explored nodes.
 
-### Algorithm 2:
-Describe the result here. Blah blah blah blah...
-<br>![image](image link of algorithm 2 results)
+<br>![Bellman-Ford Results](assets/screenshots/bellmanford.png)
+
+### Algorithm 2: Dijkstra
+Dijkstra found the same shortest path but explored far fewer tiles because it expands nodes based on the lowest current cost, it avoided unnecessary areas of the maze and reached the goal much faster. 
+
+<br>![Dijkstra Results](assets/screenshots/dijkstra.png)
 
 ___
 
 ## 🧐 Key Insights
-- List insight here
-- Blah
-- Blah
-- Blah
+- Both algorithms find the correct path in positiive-weighted graphs.
+- Bellman-Ford is simpler but much slower.
+- Dijkstra explores fewer vertices tiles and reaches the goal faster and efficiently.
+- Bellman-Ford is useful wen negative edge weights exists in the graph but in any other case, Dijkstra is better.
