@@ -60,7 +60,12 @@ Open the project folder
 ```
 cd COSC428_Final_Project
 ```
-Run the project by opening `index.html` in any browser
+Run the project by opening `index.html` in any browser.
+
+*Debug note: If main canvas does not load; run local python server with the command below, then visit http://localhost:8000/index.html*
+```
+python -m http.server 8000
+```
 
 ![Home Page](assets/screenshots/page.png)
 
